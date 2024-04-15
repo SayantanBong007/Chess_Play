@@ -3,15 +3,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import LoadingPrimaryBtn from '../Buttons/LoadingPrimaryBtn'
 import { useRouter } from 'next/navigation'
 import { Web3ConnectionContext } from '@/smartContract/Web3ConnectionContext';
-import { MatchResultEnum } from '@/smartContract/networkDetails';
 import { MatchEndData, MatchResultStausEnum } from '@/interface/matchInterface';
 
-import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import { toast } from 'react-toastify';
 import { setMatchWinnerApiCall, setRewardClaimedApiCall } from '@/apiCalls/matchApiCalls';
 import SimpleLoader from '../loader/loader';
-
 
 
 interface MatchResultPops {
@@ -51,30 +48,35 @@ function MatchResultPopup({ matchEndData, matchId, stakeAmount, opponentAddress,
         return urii
     }
 
-    // async function createMatchDataURI() {
-    //     const urii = await storage.upload({
-    //         matchId,
-    //         pgn,
-    //         movesHistory
-    //     });
-    //     return urii
-    // }
+    async function createMatchDataURI() {
+        const urii = await storage.upload({
+            matchId,
+            pgn,
+            movesHistory
+        });
+        return urii
+    }
     async function claimYourRewardHandler() {
         setTransactionLoading(true);
-
-        const nftMetaDataURI = await createImageMetadata();
-        // const matchDataURI = await createMatchDataURI();
-        const _matchEnded = await endMatch(matchId, nftMetaDataURI, nftMetaDataURI, matchEndData.matchResult);
-        if (_matchEnded) {
-            const response = await setRewardClaimedApiCall(matchId);
-            if (Number(response?.status) >= 400) {
-                toast.error('Something Went wrong. Try Again')
+        try {
+            const nftMetaDataURI = await createImageMetadata();
+            // const matchDataURI = await createMatchDataURI();
+            const _matchEnded = await endMatch(matchId, nftMetaDataURI, nftMetaDataURI, matchEndData.matchResult);
+            if (_matchEnded) {
+                const response = await setRewardClaimedApiCall(matchId);
+                if (Number(response?.status) >= 400) {
+                    toast.error('Something Went wrong. Try Again')
+                }
+                setRewardClaimed(true);
+            } else {
+                toast.error('Something Went wrong. Try Again. Or maybe your opponent already confirmed the transaction')
             }
-            setRewardClaimed(true);
-        } else {
-            toast.error('Something Went wrong. Try Again. Or maybe your opponent already confirmed the transaction')
+        } catch (error) {
+            console.error('Error claiming your reward:', error);
+            toast.error('An error occurred while claiming your reward. Please try again.');
+        } finally {
+            setTransactionLoading(false);
         }
-        setTransactionLoading(false);
     }
 
     async function updateMatchStatus() {

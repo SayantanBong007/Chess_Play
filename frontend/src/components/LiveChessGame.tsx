@@ -11,11 +11,6 @@ import MatchResultPopup from './ChessBoard/MatchResultPopup';
 import { MatchResultEnum } from '@/smartContract/networkDetails';
 import { MatchEndData } from '@/interface/matchInterface'; import WaitingForOpponentPopup from './ChessBoard/WaitingForOpponentPopup';
 
-
-
-
-
-
 const Chess = typeof ChessJS === "function" ? ChessJS : ChessJS.Chess;
 
 function LiveChessGame({ chessGameDetails }: { chessGameDetails: ChessGameDetailsInterface }) {
@@ -45,7 +40,7 @@ function LiveChessGame({ chessGameDetails }: { chessGameDetails: ChessGameDetail
         const gameCopy = { ...game };
         const result = gameCopy.move(move);
         setGame(gameCopy);
-        return result; // null if the move was illegal, the move object if the move was legal
+        return result;
     }
 
     function onDrop(sourceSquare: any, targetSquare: any, piece: any) {
@@ -78,14 +73,6 @@ function LiveChessGame({ chessGameDetails }: { chessGameDetails: ChessGameDetail
                 matchResult: isDraw ? MatchResultEnum.DRAW : ((amIWinner && isMatchCreator) ? MatchResultEnum.MATCH_CREATOR : MatchResultEnum.MATCH_JOINER)
             })
         }
-
-
-        // console.log("gameover",game.game_over());
-        // // // Returns true if the game has ended via checkmate, stalemate, draw, threefold repetition, or insufficient material. Otherwise, returns false.
-        // console.log("in_checkmate", game.in_checkmate());
-        // console.log("in_stalemate", game.in_stalemate());
-        // console.log("in_draw", game.in_draw());
-        // console.log("=================");
     }
     useEffect(() => {
         checkAndUpdateDetails();
@@ -137,7 +124,8 @@ function LiveChessGame({ chessGameDetails }: { chessGameDetails: ChessGameDetail
     }, [socket])
 
     useEffect(() => {
-        const socketURI = process.env.NEXT_PUBLIC_WEBSOCKET_URL;
+        const socketURI = "http://localhost:3001/";
+        console.log("socketURI", socketURI);
         if (!socketURI) {
             setSocket(null);
             return;

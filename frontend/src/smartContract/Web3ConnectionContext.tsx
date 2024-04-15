@@ -1,17 +1,18 @@
 "use client";
 
-import React, { createContext, useMemo, useState } from "react";
-import { useAddress, useSDK, useStorage } from "@thirdweb-dev/react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   ChessChainGameplayContract,
   MatchResultEnum,
 } from "@/smartContract/networkDetails";
+import {
+  useAddress, useStorage
+} from '@thirdweb-dev/react';
 import ChessChainGameplay from "@/smartContract/ChessPlayCore.json";
 import { ethers } from "ethers";
 
 interface ContextProps {
   address: string | undefined;
-  sdk: any;
   storage: any;
   createMatch: (matchId: string, stakeAmount: number) => Promise<boolean>;
   joinMatch: (matchId: string, stakeAmount: number) => Promise<boolean>;
@@ -27,8 +28,7 @@ interface ContextProps {
 
 export const Web3ConnectionContext = createContext<ContextProps>({
   address: "",
-  sdk: "",
-  storage: "",
+  storage: '',
   createMatch: async (matchId: string, stakeAmount: number) => false,
   joinMatch: async (matchId: string, stakeAmount: number) => false,
   endMatch: async (
@@ -42,16 +42,70 @@ export const Web3ConnectionContext = createContext<ContextProps>({
 });
 
 const Web3ConnectionWrapper = ({ children }: any) => {
-  const address = useAddress();
   const storage = useStorage();
-  const sdk = useSDK();
+  const [address, setAddress] = useState<string | undefined>(undefined);
+  const addressFromHook = useAddress();
+  const [provider, setProvider] =
+    useState<ethers.providers.Web3Provider | null>(null);
+
+  useEffect(() => {
+    const setupProvider = async () => {
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: "0x1f41b4" }], // Hexadecimal value of 128123, the custom chain ID
+          });
+        } catch (switchError) {
+          // Assuming switchError is of type any to bypass TypeScript error
+          if ((switchError as any).code === 4902) {
+            try {
+              await window.ethereum.request({
+                method: "wallet_addEthereumChain",
+                params: [
+                  {
+                    chainId: "0x1F47B",
+                    chainName: "Etherlink Testnet",
+                    nativeCurrency: {
+                      name: "Tezos",
+                      symbol: "XZT",
+                      decimals: 18,
+                    },
+                    rpcUrls: ["https://node.ghostnet.etherlink.com"],
+                    blockExplorerUrls: ["https://testnet-explorer.etherlink.com/"],
+                  },
+                ],
+              });
+            } catch (addError) {
+              console.error("Error adding custom chain:", addError);
+            }
+          } else {
+            console.error("Error switching to custom chain:", switchError);
+          }
+        }
+        const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+        setProvider(web3Provider);
+      }
+    };
+    setupProvider();
+  }, []);
+
+  useEffect(() => {
+    if (addressFromHook) {
+      setAddress(addressFromHook);
+    }
+  }, [addressFromHook]);
+
+  const signer = provider?.getSigner();
 
   async function getContract() {
-    const OrchidzBuildCreatorContract = await sdk?.getContract(
+    if (!signer) throw new Error("Signer not initialized");
+    const contract = new ethers.Contract(
       ChessChainGameplayContract,
-      ChessChainGameplay.abi
+      ChessChainGameplay.abi,
+      signer
     );
-    return OrchidzBuildCreatorContract;
+    return contract;
   }
 
   async function createMatch(
@@ -59,33 +113,34 @@ const Web3ConnectionWrapper = ({ children }: any) => {
     stakeAmount: number
   ): Promise<boolean> {
     try {
-      const _contract = await getContract();
-      // const tx = await _contract?.call(
-      //   "createMatch", // Name of your function as it is on the smart contract
-      //   [
-      //     matchId,
-      //     address,
-      //     ethers.utils.parseUnits(String(stakeAmount), "ether"),
-      //   ],
-      //   {
-      //     value: ethers.utils.parseUnits(String(stakeAmount), "ether"),
-      //   }
-      // );
+      const contract = await getContract();
+      console.log(contract);
+      const tx = await contract.createMatch(
+        matchId,
+        address,
+        String(stakeAmount),
+        {value: String(stakeAmount)}
+      );
+      await tx.wait();
       return true;
     } catch (error) {
       console.log("createMatch error", error);
       return false;
     }
   }
+
   async function joinMatch(
     matchId: string,
     stakeAmount: number
   ): Promise<boolean> {
     try {
-      const _contract = await getContract();
-      const tx = await _contract?.call("joinMatch", [matchId, address], {
-        value: ethers.utils.parseUnits(String(stakeAmount), "ether"),
-      });
+      const contract = await getContract();
+      const tx = await contract.joinMatch(
+        matchId,
+        address,
+        {value: String(stakeAmount)}
+      );
+      await tx.wait();
       return true;
     } catch (error) {
       console.log("joinMatch error", error);
@@ -100,24 +155,26 @@ const Web3ConnectionWrapper = ({ children }: any) => {
     gameResult: MatchResultEnum
   ): Promise<boolean> {
     try {
-      const _contract = await getContract();
-      const tx = await _contract?.call("endMatch", [
+      const contract = await getContract();
+      const tx = await contract.endMatch(
         matchId,
         matchDataURI,
         matchNftURI,
-        gameResult,
-      ]);
+        gameResult
+      );
+      await tx.wait();
       return true;
     } catch (error) {
       console.log("endMatch error", error);
       return false;
     }
   }
+
   async function getMatchDetailOf(matchId: string): Promise<any> {
     try {
-      const _contract = await getContract();
-      const tx = await _contract?.call("matchDetailOf", [matchId]);
-      return true;
+      const contract = await getContract();
+      const details = await contract.matchDetailOf(matchId);
+      return details;
     } catch (error) {
       console.log("getMatchDetailOf error", error);
       return false;
@@ -126,11 +183,11 @@ const Web3ConnectionWrapper = ({ children }: any) => {
 
   async function getUserNftBalance(): Promise<any> {
     try {
-      const _contract = await getContract();
-      const tx = await _contract?.call("balanceOf", [address]);
-      return tx;
+      const contract = await getContract();
+      const balance = await contract.balanceOf(address);
+      return balance;
     } catch (error) {
-      console.log("getMatchDetailOf error", error);
+      console.log("getUserNftBalance error", error);
       return false;
     }
   }
@@ -139,7 +196,6 @@ const Web3ConnectionWrapper = ({ children }: any) => {
     <Web3ConnectionContext.Provider
       value={{
         address,
-        sdk,
         storage,
         createMatch,
         joinMatch,
@@ -154,3 +210,4 @@ const Web3ConnectionWrapper = ({ children }: any) => {
 };
 
 export default Web3ConnectionWrapper;
+

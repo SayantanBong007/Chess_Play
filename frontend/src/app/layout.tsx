@@ -4,6 +4,7 @@ import Web3ConnectionWrapper from "@/smartContract/Web3ConnectionContext";
 import "@/style/globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Chess Play",
@@ -24,6 +25,7 @@ export default function RootLayout({
               <Navigation />
               {children}
               <ToastContainer />
+              <Toaster />
             </main>
           </Web3ConnectionWrapper>
         </ThirdWebProvider>

@@ -2,10 +2,7 @@
 import {
   ThirdwebProvider,
   metamaskWallet,
-  // walletConnect,
 } from "@thirdweb-dev/react";
-
-import { Fantom, FantomTestnet } from "@thirdweb-dev/chains";
 
 const Etherlink = {
   chainId: 128123, // Chain ID of the network
@@ -26,8 +23,8 @@ function ThirdWebProvider({ children }: any) {
   return (
     <ThirdwebProvider
       supportedWallets={[metamaskWallet()]}
-      activeChain="Etherlink Testnet"
-      supportedChains={[Etherlink]}
+      // activeChain="Etherlink Testnet"
+      // supportedChains={[Etherlink]}
       dAppMeta={{
         name: "Chess Play",
         description: "chess Play desss",
