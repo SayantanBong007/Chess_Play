@@ -31,12 +31,12 @@ function Navigation() {
         <h1 className="text-2xl text-text-color ">Chess Play</h1>
       </span>
       <span className="flex items-center justify-center gap-4">
-        <h1 className="basic_btn_4" onClick={() => router.push("/profile")}>
+        <h1 className="basic_btn_3" onClick={() => router.push("/profile")}>
           <FaChessKing />
           Profile
         </h1>
 
-        <h1 className="basic_btn_4" onClick={() => router.push("/marketplace")}>
+        <h1 className="basic_btn_3" onClick={() => router.push("/marketplace")}>
           <SiBlockchaindotcom />
           Marketplace
         </h1>
