@@ -84,8 +84,8 @@ function JoinMatch() {
                                 <div className="flex_center border rounded-xl px-8 py-4 mt-8">
                                     <h3 className="text-lg">Match Details</h3>
                                     <h4 >Opponent Address: {matchDetails.matchCreatorAddress}</h4>
-                                    <h4>Stake Amount: {matchDetails.stackedAmount} FTM</h4>
-                                    <h4>Winner Amount: {2 * matchDetails.stackedAmount} FTM</h4>
+                                    <h4>Stake Amount: {matchDetails.stackedAmount} XTZ</h4>
+                                    <h4>Winner Amount: {2 * matchDetails.stackedAmount} XTZ</h4>
                                 </div>
                                 <LoadingPrimaryBtn text='Join Match' loading={matchJoining} onClick={joinMatchHandler} disabled={matchJoining} />
                             </div>

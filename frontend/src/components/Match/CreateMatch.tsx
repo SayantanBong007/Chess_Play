@@ -73,7 +73,7 @@ function CreateMatch() {
             type="number"
             value={stackedAmount}
             onChange={(e) => setStackedAmount(Number(e.target.value))}
-            placeholder="How much FTM do you want to stake?"
+            placeholder="How much XTZ do you want to stake?"
           />
           <LoadingPrimaryBtn
             className="basic_btn_2 my-2"
@@ -83,7 +83,7 @@ function CreateMatch() {
             disabled={matchCreating}
           />
           <h3 className="text-md text-text-color">
-            Winner will get: {2 * stackedAmount} FTM
+            Winner will get: {2 * stackedAmount} XTZ
           </h3>
         </div>
       </PopUpModel>

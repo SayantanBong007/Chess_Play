@@ -24,6 +24,9 @@ interface ContextProps {
   ) => Promise<boolean>;
   getMatchDetailOf: (matchId: string) => any;
   getUserNftBalance: () => any;
+  getTokenUriFromTokenId: (tokenId: number) => Promise<string>;
+  connectWallet: () => Promise<void>;
+  getBalance: () => Promise<string>;
 }
 
 export const Web3ConnectionContext = createContext<ContextProps>({
@@ -39,6 +42,9 @@ export const Web3ConnectionContext = createContext<ContextProps>({
   ) => false,
   getMatchDetailOf: (matchId: string) => {},
   getUserNftBalance: () => {},
+  getTokenUriFromTokenId: async (tokenId: number) => "",
+  connectWallet: async () => {},
+  getBalance: async () => "",
 });
 
 const Web3ConnectionWrapper = ({ children }: any) => {
@@ -192,6 +198,69 @@ const Web3ConnectionWrapper = ({ children }: any) => {
     }
   }
 
+  async function getTokenUriFromTokenId(tokenId: number): Promise<string> {
+    try {
+      const contract = await getContract();
+      const tokenUri = await contract.tokenURI(tokenId);
+      return tokenUri;
+    } catch (error) {
+      console.error("getTokenUriFromTokenId error", error);
+      return "";
+    }
+  }
+
+  async function connectWallet(): Promise<void> {
+    try {
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: "0x1f41b4" }], // Hexadecimal value of 128123, the custom chain ID
+          });
+        } catch (switchError) {
+          // Assuming switchError is of type any to bypass TypeScript error
+          if ((switchError as any).code === 4902) {
+            try {
+              await window.ethereum.request({
+                method: "wallet_addEthereumChain",
+                params: [
+                  {
+                    chainId: "0x1F47B",
+                    chainName: "Etherlink Testnet",
+                    nativeCurrency: {
+                      name: "Tezos",
+                      symbol: "XZT",
+                      decimals: 18,
+                    },
+                    rpcUrls: ["https://node.ghostnet.etherlink.com"],
+                    blockExplorerUrls: ["https://testnet-explorer.etherlink.com/"],
+                  },
+                ],
+              });
+            } catch (addError) {
+              console.error("Error adding custom chain:", addError);
+            }
+          } else {
+            console.error("Error switching to custom chain:", switchError);
+          }
+        }
+        const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+        setProvider(web3Provider);
+      }
+    } catch (error) {
+      console.error('Error connecting wallet:', error);
+    }
+  }
+
+  async function getBalance() {
+    if (address) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const balance = await provider.getBalance(address);
+      return ethers.utils.formatEther(balance);
+    }
+    return "0";
+  }
+
   return (
     <Web3ConnectionContext.Provider
       value={{
@@ -202,6 +271,9 @@ const Web3ConnectionWrapper = ({ children }: any) => {
         endMatch,
         getMatchDetailOf,
         getUserNftBalance,
+        getTokenUriFromTokenId,
+        connectWallet,
+        getBalance
       }}
     >
       {children}
@@ -210,4 +282,3 @@ const Web3ConnectionWrapper = ({ children }: any) => {
 };
 
 export default Web3ConnectionWrapper;
-
