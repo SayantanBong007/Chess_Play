@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { ConnectWallet } from "@thirdweb-dev/react";
 import Image from "next/image";
 
 import { usePathname, useRouter } from "next/navigation";
 import { FaLandmark } from "react-icons/fa";
 import { FaChessKing } from "react-icons/fa";
 import { SiBlockchaindotcom } from "react-icons/si";
+import ConnectWalletComponent from "./Buttons/ConnectWalletB";
 
 function Navigation() {
   const router = useRouter();
@@ -41,7 +41,7 @@ function Navigation() {
           Marketplace
         </h1>
 
-        <ConnectWallet />
+        <ConnectWalletComponent />
       </span>
     </div>
   );

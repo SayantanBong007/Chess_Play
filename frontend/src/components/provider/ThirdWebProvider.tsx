@@ -1,8 +1,5 @@
 "use client";
-import {
-  ThirdwebProvider,
-  metamaskWallet,
-} from "@thirdweb-dev/react";
+import { ThirdwebProvider, metamaskWallet } from "@thirdweb-dev/react";
 
 const Etherlink = {
   chainId: 128123, // Chain ID of the network
@@ -23,7 +20,7 @@ function ThirdWebProvider({ children }: any) {
   return (
     <ThirdwebProvider
       supportedWallets={[metamaskWallet()]}
-      // activeChain="Etherlink Testnet"
+      activeChain={Etherlink}
       // supportedChains={[Etherlink]}
       dAppMeta={{
         name: "Chess Play",
