@@ -21,7 +21,7 @@ export default function Home() {
           <>
             <ConnectWallet
               btnTitle="Connect Wallet To use marketplace"
-              theme="dark"
+              theme="light"
               className="px-8 py-4 text-lg"
             />
           </>

@@ -39,12 +39,9 @@ export default function Home() {
           <>
             <ConnectWallet
               btnTitle="Connect Wallet To Play"
-              theme="dark"
+              theme="light"
               className="px-8 py-4 text-lg"
             />
-            {/* <p className="text-center mb-4 mt-1">
-              Connect with Fantom Mainnet to play
-            </p> */}
           </>
         )}
       </div>

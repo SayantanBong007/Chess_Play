@@ -7,16 +7,18 @@ import { MatchData } from "@/interface/matchInterface";
 import { getMatchsByUserAddressApiCall } from "@/apiCalls/matchApiCalls";
 import { Web3ConnectionContext } from "@/smartContract/Web3ConnectionContext";
 import SimpleLoader from "../loader/loader";
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ethers } from "ethers";
+import ConnectWallet from "@thirdweb-dev/react";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
 function ProfileDetails() {
-  const { address, getUserNftBalance } = useContext(Web3ConnectionContext);
+  const { address, getUserNftBalance, getBalance } = useContext(Web3ConnectionContext);
   const [nftBalance, setNftBalance] = useState(0);
   const [matchsDetails, setMatchsDetails] = useState<MatchData[]>([]);
+  const [balance, setBalance] = useState("");
 
   const [loadingMatchs, setLoadingMatchs] = useState(true);
   const [loadingNfts, setLoadingNfts] = useState(true);
@@ -44,6 +46,7 @@ function ProfileDetails() {
     if (address) {
       loadNftBalance();
       loadAllMatchsDetails();
+      getBalance();
     }
   }, [address]);
 
