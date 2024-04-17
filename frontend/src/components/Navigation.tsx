@@ -41,7 +41,7 @@ function Navigation() {
           Marketplace
         </h1>
 
-        <ConnectWallet />
+        <ConnectWallet theme="light"  />
       </span>
     </div>
   );

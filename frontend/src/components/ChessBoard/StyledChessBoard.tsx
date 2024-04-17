@@ -1,6 +1,5 @@
 import React from "react";
 import { Chessboard } from "react-chessboard";
-import toast from "react-hot-toast";
 
 interface StyledChessBoardProps {
   position: any;
@@ -37,11 +36,11 @@ function StyledChessBoard({
         />
         <div className="flex w-full justify-between text-text-color text-xl p-2 mt-2 rounded-lg">
           <p>{myAddress}</p>
-          {isCheck && (
+          {isCheck  && (
             <>
-              {toast("Check!", {
+              {/* {toast("Check!", {
                 icon: "♟️",
-              })}
+              })} */}
               <p className="text-cyan-500 text-3xl font-bold p-2">Check!</p>
             </>
           )}

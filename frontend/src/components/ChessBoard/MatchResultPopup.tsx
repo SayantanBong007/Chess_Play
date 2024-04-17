@@ -9,6 +9,7 @@ import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import { toast } from 'react-toastify';
 import { setMatchWinnerApiCall, setRewardClaimedApiCall } from '@/apiCalls/matchApiCalls';
 import SimpleLoader from '../loader/loader';
+import { makeFileObjects, uploadFile } from '../../utils/lighthouse';
 
 
 interface MatchResultPops {
@@ -35,17 +36,19 @@ function MatchResultPopup({ matchEndData, matchId, stakeAmount, opponentAddress,
         const _imageUrl = await toPng(chessBoardDivRef.current, { quality: .4, backgroundColor: "#A020F0" });
         setNftImage(_imageUrl)
 
-        console.log("creating nft metadata");
+        console.log("creating nft metadata", _imageUrl);
 
-        const urii = await storage.upload({
+        const file = {
             "name": "ChessChain Match Winner NFT",
             "description": "This nft minted by ChessChain when user won the match",
             pgn,
             movesHistory,
             matchId,
             "image": _imageUrl,
-        });
-        return urii
+        };
+
+        return await uploadFile(file);
+        
     }
 
     async function createMatchDataURI() {
@@ -119,7 +122,7 @@ function MatchResultPopup({ matchEndData, matchId, stakeAmount, opponentAddress,
                                 :
                                 <LoadingPrimaryBtn text='Claim Your Rewards' loading={transactionLoading} onClick={claimYourRewardHandler} disabled={transactionLoading} />
                             }
-                            <p className=" text-sm">{matchEndData.isDraw ? stakeAmount : 2 * stakeAmount} FTM Staked Reward {!matchEndData.isDraw && "+ Match Winning Nft"}</p>
+                            <p className=" text-sm">{matchEndData.isDraw ? stakeAmount : 2 * stakeAmount} XTZ Staked Reward {!matchEndData.isDraw && "+ Match Winning Nft"}</p>
                             {nftImage &&
                                 <>
                                     <img src={nftImage} alt="nft image" width={400} className="rounded-lg" />

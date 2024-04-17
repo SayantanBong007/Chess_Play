@@ -32,7 +32,7 @@ function MatchsDetails({ matchsDetails, userAddress }: { matchsDetails: MatchDat
                         <th>Date</th>
                         <th>MathId</th>
                         <th>Opponent Address</th>
-                        <th>Staked FTM</th>
+                        <th>Staked XTZ</th>
                         <th>Match Result</th>
                         <th>Reward Claimed</th>
                     </tr>
