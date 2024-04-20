@@ -36,13 +36,8 @@ function StyledChessBoard({
         />
         <div className="flex w-full justify-between text-text-color text-xl p-2 mt-2 rounded-lg">
           <p>{myAddress}</p>
-          {isCheck  && (
-            <>
-              {/* {toast("Check!", {
-                icon: "♟️",
-              })} */}
-              <p className="text-cyan-500 text-3xl font-bold p-2">Check!</p>
-            </>
+          {isCheck && (
+            <p className="text-cyan-500 text-3xl font-bold p-2">Check!</p>
           )}
         </div>
       </div>

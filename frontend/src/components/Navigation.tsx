@@ -8,6 +8,7 @@ import { FaLandmark } from "react-icons/fa";
 import { FaChessKing } from "react-icons/fa";
 import { SiBlockchaindotcom } from "react-icons/si";
 import ConnectWalletComponent from "./Buttons/ConnectWalletB";
+import { FaChessKnight } from "react-icons/fa";
 
 function Navigation() {
   const router = useRouter();
@@ -39,6 +40,11 @@ function Navigation() {
         <h1 className="basic_btn_3" onClick={() => router.push("/marketplace")}>
           <SiBlockchaindotcom />
           Marketplace
+        </h1>
+
+        <h1 className="basic_btn_3" onClick={() => router.push("/leaderboard")}>
+          <FaChessKnight />
+          Leader Board
         </h1>
 
         <ConnectWalletComponent />

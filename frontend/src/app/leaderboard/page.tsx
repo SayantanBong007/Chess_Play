@@ -10,9 +10,9 @@ export default function Home() {
   return (
     <section className="page_section flex">
       <div className="flex-1 flex_center text-text-color ">
-        <h1 className="text-6xl font-bold primary_gradient">Marketplace</h1>
-        <p className="w-[80%] text-center text-xl mb-8 mt-2 font-bold ">
-          Sell and buy nfts
+        <h1 className="text-6xl font-bold primary_gradient">Leader Board</h1>
+        <p className="w-[80%] text-center text-xl font-bold mb-8 mt-3">
+          Your Score
         </p>
 
         {address ? (

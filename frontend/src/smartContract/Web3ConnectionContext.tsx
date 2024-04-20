@@ -5,9 +5,7 @@ import {
   ChessChainGameplayContract,
   MatchResultEnum,
 } from "@/smartContract/networkDetails";
-import {
-  useAddress, useStorage
-} from '@thirdweb-dev/react';
+import { useAddress, useStorage } from "@thirdweb-dev/react";
 import ChessChainGameplay from "@/smartContract/ChessPlayCore.json";
 import { ethers } from "ethers";
 
@@ -31,7 +29,7 @@ interface ContextProps {
 
 export const Web3ConnectionContext = createContext<ContextProps>({
   address: "",
-  storage: '',
+  storage: "",
   createMatch: async (matchId: string, stakeAmount: number) => false,
   joinMatch: async (matchId: string, stakeAmount: number) => false,
   endMatch: async (
@@ -78,7 +76,9 @@ const Web3ConnectionWrapper = ({ children }: any) => {
                       decimals: 18,
                     },
                     rpcUrls: ["https://node.ghostnet.etherlink.com"],
-                    blockExplorerUrls: ["https://testnet-explorer.etherlink.com/"],
+                    blockExplorerUrls: [
+                      "https://testnet-explorer.etherlink.com/",
+                    ],
                   },
                 ],
               });
@@ -124,8 +124,8 @@ const Web3ConnectionWrapper = ({ children }: any) => {
       const tx = await contract.createMatch(
         matchId,
         address,
-        String(stakeAmount),
-        {value: String(stakeAmount)}
+        ethers.utils.parseEther(String(stakeAmount)),
+        { value: ethers.utils.parseEther(String(stakeAmount)) }
       );
       await tx.wait();
       return true;
@@ -141,11 +141,9 @@ const Web3ConnectionWrapper = ({ children }: any) => {
   ): Promise<boolean> {
     try {
       const contract = await getContract();
-      const tx = await contract.joinMatch(
-        matchId,
-        address,
-        {value: String(stakeAmount)}
-      );
+      const tx = await contract.joinMatch(matchId, address, {
+        value: ethers.utils.parseEther(String(stakeAmount)),
+      });
       await tx.wait();
       return true;
     } catch (error) {
@@ -233,7 +231,9 @@ const Web3ConnectionWrapper = ({ children }: any) => {
                       decimals: 18,
                     },
                     rpcUrls: ["https://node.ghostnet.etherlink.com"],
-                    blockExplorerUrls: ["https://testnet-explorer.etherlink.com/"],
+                    blockExplorerUrls: [
+                      "https://testnet-explorer.etherlink.com/",
+                    ],
                   },
                 ],
               });
@@ -248,7 +248,7 @@ const Web3ConnectionWrapper = ({ children }: any) => {
         setProvider(web3Provider);
       }
     } catch (error) {
-      console.error('Error connecting wallet:', error);
+      console.error("Error connecting wallet:", error);
     }
   }
 
@@ -273,7 +273,7 @@ const Web3ConnectionWrapper = ({ children }: any) => {
         getUserNftBalance,
         getTokenUriFromTokenId,
         connectWallet,
-        getBalance
+        getBalance,
       }}
     >
       {children}
