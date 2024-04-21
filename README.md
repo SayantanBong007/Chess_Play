@@ -4,18 +4,18 @@
 </p align = "center">
   <p align="center">
 Revolutionizing Chess with Blockchain: Stake XTZ, Win NFTs     <br />
-    <a href="https://youtu.be/W3HBMstAKuA">View Demo</a>
+    <a href="https://youtu.be/7lgVWYOOpH0">Video Demo</a>
     ·
-    <a href="https://github.com/InfoNex-Labs/Proposal/issues">Request Feature</a>
+    <a href="https://github.com/SayantanBong007/Chess_Play/issues">Request Feature</a>
     ·
-    <a href="https://www.canva.com/design/DAF6wySXVK4/WkU2_Hli_bZDTzsby4tvlg/view?utm_content=DAF6wySXVK4&utm_campaign=designshare&utm_medium=link&utm_source=editor">Report Bug</a>
+    <a href="#game-pics">Game Pics</a>
   </p>
 
 - [About The Project](#about-the-project)
 - [Inspiration](#inspiration)
 - [Game Architecture](#game-architecture)
 - [Game Features](#features)
-- [Game Demo](#game-demo)
+- [Game Pics](#game-pics)
 - [Run Locally](#run-locally)
   - [Frontend](#frontend)
   - [Backend](#backend)
@@ -47,7 +47,7 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 <center>
 
 ## Game Architecture
-![alt text](/frontend/public/Flow-chart.png)
+![alt text](/assets/Flow-chart.png)
 
 </center>
 
@@ -63,7 +63,64 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 
 - **Storage on the Etherlink Rollup in Tezos Blockchain:** Game details, match history, and NFTs are securely stored on the Etherlink Rollup within the Tezos Blockchain, ensuring data integrity, transparency, and immutability. This integration with blockchain technology enhances the platform's trustworthiness and provides users with a decentralized gaming experience.
 
-## Game Demo
+
+
+<details>
+<summary>
+
+## Game Pics
+
+
+</summary>
+
+<center>
+
+<h3>Home Page </h3>
+
+![home](/assets/home-page.png)
+
+<center>
+
+<h3>Create Match</h3>
+
+![home](/assets/create-match.png)
+
+
+
+<h3>Joining Id</h3>
+
+![home](/assets/joining-id.png)
+
+
+<h3>Join Match </h3>
+
+![home](/assets/Join-match.png)
+
+</center>
+
+<h3>Chess Board </h3>
+
+![home](/assets/Chess-Board.png)
+
+<h3>Chess Play NFT </h3>
+
+![home](/assets/download.png)
+
+<h3>Profile Page </h3>
+
+![home](/assets/Profile.png)
+
+<h3>Leaderboard </h3>
+
+![home](/assets/leader-board.png)
+
+<h3>Chess Play NFT Marketplace </h3>
+
+![home](/assets/Marketplace.png)
+
+</center>
+
+</details>
 
 
 ---
@@ -110,15 +167,14 @@ Project github: https://github.com/SayantanBong007/Chess_Play
 
 ## Acknowledgment
 
-Thanks to all the sponsors (Etherlink) and organizers (Encode-Club) for making Scaling Web3
-Hackathon possible. We would really appreciate the feedback/guidance from the judges.
+Thanks to all the **sponsors (Etherlink) and organizers (Encode-Club)** for making ***Scaling Web3
+Hackathon possible***. We would really appreciate the feedback/guidance from the judges.
 
 ---
 
 ## Links And References
 - Deployed Contract on Etherlink: [Etherlink-Explorer](https://testnet-explorer.etherlink.com/address/0x8Fa642A1c807b71CBe6F73dA1343e090A4E18B1d)
-- Figma File's: [Figma](https://www.figma.com/file/glPqL1ZHLqNwPauBKnm7Kw/Untitled?type=design&node-id=0-1&t=VFufaBNNwZgKHQ5y-0)
-- Presentation: [Link]()
+- Figma File's: [Figma](https://www.figma.com/file/XPbq8iZ7Zsw61kPruJltky/Untitled?type=design&node-id=0%3A1&mode=design&t=yZUiQ0vIaGyFlwt0-1)
 - Etherlink Docs: [Etherlink](https://docs.etherlink.com/)
 - Next.js Docs: [Next.js](https://nextjs.org/)
 - Hardhat Docs: [Hardhat](https://hardhat.org/hardhat-runner/docs/getting-started)
