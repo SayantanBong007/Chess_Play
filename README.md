@@ -64,7 +64,14 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 - **Storage on the Etherlink Rollup in Tezos Blockchain:** Game details, match history, and NFTs are securely stored on the Etherlink Rollup within the Tezos Blockchain, ensuring data integrity, transparency, and immutability. This integration with blockchain technology enhances the platform's trustworthiness and provides users with a decentralized gaming experience.
 
 
+
+<details>
+<summary>
+
 ## Game Pics
+
+
+</summary>
 
 <center>
 
@@ -112,6 +119,8 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 ![home](/assets/Marketplace.png)
 
 </center>
+
+</details>
 
 
 ---
