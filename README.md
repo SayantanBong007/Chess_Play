@@ -13,15 +13,16 @@ Revolutionizing Chess with Blockchain: Stake XTZ, Win NFTs     <br />
 
 - [About The Project](#about-the-project)
 - [Inspiration](#inspiration)
-- [Game Architecture](#protocol-architecture)
-  - [Collateralization and Borrowing](#collateralization-and-borrowing)
-  - [Loan Terms and Repayment](#loan-terms-and-repayment)
-  - [Lenders and Yield Generation](#lenders-and-yield-generation)
-  - [Advantages](#advantages-over-peer-to-peer-lending)
-- [Oracle Architecture](#aurum-oracle)
-  - [Chainlink Node Setup and Job Execution](#chainlink-node-setup-and-job-execution)
-  - [NFT Floor Price request](#requesting-nft-floor-price-through-aurum-client-contract)
-  - [Fetching Floor Price](#fetching-nft-floor-price-and-providing-to-user)
+- [Game Architecture](#game-architecture)
+- [Game Features](#features)
+- [Game Demo](#game-demo)
+- [Run Locally](#run-locally)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+  - [Smart Contract](#smart-contract)
+- [Future Work](#future-work)
+- [Contact](#contact)
+- [Acknowledgment](#acknowledgment)
 - [Links and references](#links-and-references)
 
 ---
@@ -50,7 +51,7 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 
 </center>
 
-## Features:
+## Features
 
 - **Match Creation and XTZ Staking:** Users can easily create chess matches on the platform and stake XTZ tokens to challenge opponents, adding an exciting layer of competitiveness to the gameplay.
 
@@ -62,14 +63,8 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 
 - **Storage on the Etherlink Rollup in Tezos Blockchain:** Game details, match history, and NFTs are securely stored on the Etherlink Rollup within the Tezos Blockchain, ensuring data integrity, transparency, and immutability. This integration with blockchain technology enhances the platform's trustworthiness and provides users with a decentralized gaming experience.
 
+## Game Demo
 
----
-## Future Work 
-- In the pipeline, Chess Chain is set to expand with new functionalities. We're envisioning a robust marketplace where users can trade their NFTs, adding depth to the gaming experience.
-
-- Additionally, we're committed to elevating user engagement through features like leaderboards, social interactions, and customizable profiles. These enhancements aim to make the Chess Chain experience even more immersive and enjoyable.
-
-- Our overarching objective is to cultivate a vibrant community around Chess Play, positioning it as the premier destination for blockchain-powered chess gaming.
 
 ---
 ## Run Locally
@@ -88,10 +83,18 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 - Install dependencies using `npm install`.
 - Run the backend server using `npm start`.
 
-### Smart Contracts
+### Smart Contract
 - Poit Terminal to `smart contract` directory.
 - Install dependencies using `npm install`.
 - Use `npx hardhat test` to run the integration tests.
+
+---
+## Future Work 
+- In the pipeline, Chess Chain is set to expand with new functionalities. We're envisioning a robust marketplace where users can trade their NFTs, adding depth to the gaming experience.
+
+- Additionally, we're committed to elevating user engagement through features like leaderboards, social interactions, and customizable profiles. These enhancements aim to make the Chess Chain experience even more immersive and enjoyable.
+
+- Our overarching objective is to cultivate a vibrant community around Chess Play, positioning it as the premier destination for blockchain-powered chess gaming.
 
 ---
 
@@ -104,7 +107,7 @@ Project github: https://github.com/SayantanBong007/Chess_Play
 
 ---
 
-## Acknowledgments
+## Acknowledgment
 
 Thanks to all the sponsors (Etherlink) and organizers (Encode-Club) for making Scaling Web3
 Hackathon possible. We would really appreciate the feedback/guidance from the judges.
