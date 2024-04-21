@@ -4,11 +4,11 @@
 </p align = "center">
   <p align="center">
 Revolutionizing Chess with Blockchain: Stake XTZ, Win NFTs     <br />
-    <a href="https://youtu.be/W3HBMstAKuA">View Demo</a>
+    <a href="https://youtu.be/W3HBMstAKuA">Video Demo</a>
     ·
     <a href="https://github.com/InfoNex-Labs/Proposal/issues">Request Feature</a>
     ·
-    <a href="https://www.canva.com/design/DAF6wySXVK4/WkU2_Hli_bZDTzsby4tvlg/view?utm_content=DAF6wySXVK4&utm_campaign=designshare&utm_medium=link&utm_source=editor">Report Bug</a>
+    <a href="https://www.canva.com/design/DAF6wySXVK4/WkU2_Hli_bZDTzsby4tvlg/view?utm_content=DAF6wySXVK4&utm_campaign=designshare&utm_medium=link&utm_source=editor">Presentaion</a>
   </p>
 
 - [About The Project](#about-the-project)
@@ -47,7 +47,7 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 <center>
 
 ## Game Architecture
-![alt text](/frontend/public/Flow-chart.png)
+![alt text](/assets/Flow-chart.png)
 
 </center>
 
@@ -63,7 +63,56 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 
 - **Storage on the Etherlink Rollup in Tezos Blockchain:** Game details, match history, and NFTs are securely stored on the Etherlink Rollup within the Tezos Blockchain, ensuring data integrity, transparency, and immutability. This integration with blockchain technology enhances the platform's trustworthiness and provides users with a decentralized gaming experience.
 
-## Game Demo
+
+
+<details>
+<summary>
+
+## Game Pics
+
+</summary>
+
+<center>
+
+<h3>Home Page </h3>
+
+![home](/assets/home-page.png)
+
+<h3>Create Match</h3>
+
+![home](/assets/create-match.png)
+
+<h3>Joining Id</h3>
+
+![home](/assets/joining-id.png)
+
+<h3>Join Match </h3>
+
+![home](/assets/Join-match.png)
+
+<h3>Chess Board </h3>
+
+![home](/assets/Chess-Board.png)
+
+<h3>Chess Play NFT </h3>
+
+![home](/assets/download.png)
+
+<h3>Profile Page </h3>
+
+![home](/assets/Profile.png)
+
+<h3>Leaderboard </h3>
+
+![home](/assets/leader-board.png)
+
+<h3>Chess Play NFT Marketplace </h3>
+
+![home](/assets/Marketplace.png)
+
+</center>
+
+</details>
 
 
 ---
