@@ -23,7 +23,7 @@ Revolutionizing Chess with Blockchain: Stake XTZ, Win NFTs     <br />
 - [Future Work](#future-work)
 - [Contact](#contact)
 - [Acknowledgment](#acknowledgment)
-- [Links and references](#links-and-references)
+- [Links And References](#links-and-references)
 
 ---
 
@@ -87,12 +87,13 @@ Choosing Etherlink as our blockchain platform was deliberate. **Etherlink** offe
 - Poit Terminal to `smart contract` directory.
 - Install dependencies using `npm install`.
 - Use `npx hardhat test` to run the integration tests.
+- Deployed Contract [explorer-link](https://testnet-explorer.etherlink.com/address/0x8Fa642A1c807b71CBe6F73dA1343e090A4E18B1d)
 
 ---
 ## Future Work 
-- In the pipeline, Chess Chain is set to expand with new functionalities. We're envisioning a robust marketplace where users can trade their NFTs, adding depth to the gaming experience.
+- In the pipeline, Chess Play is set to expand with new functionalities. We're envisioning a robust marketplace where users can trade their NFTs, adding depth to the gaming experience.
 
-- Additionally, we're committed to elevating user engagement through features like leaderboards, social interactions, and customizable profiles. These enhancements aim to make the Chess Chain experience even more immersive and enjoyable.
+- Additionally, we're committed to elevating user engagement through features like leaderboards, social interactions, and customizable profiles. These enhancements aim to make the Chess Play experience even more immersive and enjoyable.
 
 - Our overarching objective is to cultivate a vibrant community around Chess Play, positioning it as the premier destination for blockchain-powered chess gaming.
 
@@ -114,6 +115,11 @@ Hackathon possible. We would really appreciate the feedback/guidance from the ju
 
 ---
 
-## Links and references
-- Deployed Contract on Etherlink: [Etherlink-explorer](https://testnet-explorer.etherlink.com/address/0x8Fa642A1c807b71CBe6F73dA1343e090A4E18B1d)
+## Links And References
+- Deployed Contract on Etherlink: [Etherlink-Explorer](https://testnet-explorer.etherlink.com/address/0x8Fa642A1c807b71CBe6F73dA1343e090A4E18B1d)
 - Figma File's: [Figma](https://www.figma.com/file/glPqL1ZHLqNwPauBKnm7Kw/Untitled?type=design&node-id=0-1&t=VFufaBNNwZgKHQ5y-0)
+- Presentation: [Link]()
+- Etherlink Docs: [Etherlink](https://docs.etherlink.com/)
+- Next.js Docs: [Next.js](https://nextjs.org/)
+- Hardhat Docs: [Hardhat](https://hardhat.org/hardhat-runner/docs/getting-started)
+- Express Docs: [Express](https://expressjs.com/)
