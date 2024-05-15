@@ -46,7 +46,7 @@ function MatchResultPopup({
     if (!chessBoardDivRef.current) return;
     const _imageUrl = await toPng(chessBoardDivRef.current, {
       quality: 0.4,
-      backgroundColor: "#A020F0",
+      backgroundColor: "#0097A7",
     });
     setNftImage(_imageUrl);
 

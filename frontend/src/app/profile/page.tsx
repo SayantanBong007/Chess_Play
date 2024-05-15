@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import { useAddress } from "@thirdweb-dev/react";
+// import { useAddress } from "@thirdweb-dev/react";
 
-import { ConnectWallet } from "@thirdweb-dev/react";
+// import { ConnectWallet } from "@thirdweb-dev/react";
 import ProfileDetails from "@/components/Profile/ProfileDetails";
 
 export default function Home() {

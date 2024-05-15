@@ -8,14 +8,17 @@ import { getMatchsByUserAddressApiCall } from "@/apiCalls/matchApiCalls";
 import { Web3ConnectionContext } from "@/smartContract/Web3ConnectionContext";
 import SimpleLoader from "../loader/loader";
 import { ethers } from "ethers";
-import ConnectWallet from "@thirdweb-dev/react";
+
+import ConnectWalletComponentP from "../Buttons/ConnectWalletP";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
 
 function ProfileDetails() {
-  const { address, getUserNftBalance, getBalance } = useContext(Web3ConnectionContext);
+  const { address, getUserNftBalance, getBalance } = useContext(
+    Web3ConnectionContext
+  );
   const [nftBalance, setNftBalance] = useState(0);
   const [matchsDetails, setMatchsDetails] = useState<MatchData[]>([]);
   const [balance, setBalance] = useState("");
@@ -96,11 +99,7 @@ function ProfileDetails() {
                   />
                 )
               ) : (
-                <ConnectWallet
-                  btnTitle="Connect Wallet To See Profile"
-                  theme="dark"
-                  className="px-8 py-4 text-lg"
-                />
+                <ConnectWalletComponentP />
               )}
             </div>
           </Tab.Panel>
@@ -114,11 +113,7 @@ function ProfileDetails() {
                   <NftsDetails nftBalance={nftBalance} />
                 )
               ) : (
-                <ConnectWallet
-                  btnTitle="Connect Wallet To See Profile"
-                  theme="dark"
-                  className="px-8 py-4 text-lg"
-                />
+                <ConnectWalletComponentP />
               )}
             </div>
           </Tab.Panel>
