@@ -5,7 +5,7 @@ dotenv.config();
 
 // Connect to MongoDB database
 mongoose
-  .connect("mongodb://localhost:27017/chesplay")
+  .connect(process.env.MONGODB_URL)
   .then((con) => {
     console.log("Connected to database successfully");
   })
