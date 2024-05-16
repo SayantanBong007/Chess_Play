@@ -5,7 +5,7 @@ import {
 } from "@/interface/matchInterface";
 import axios, { AxiosResponse } from "axios";
 
-export const apiBaseUrl = "http://localhost:3001/" + "api/v1";
+export const apiBaseUrl = "https://chess-play-backend.vercel.app/api/v1";
 
 export const getMatchDetailsApiCall = async (matchId: string) => {
   try {

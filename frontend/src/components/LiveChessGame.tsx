@@ -148,7 +148,7 @@ function LiveChessGame({
   }, [socket]);
 
   useEffect(() => {
-    const socketURI = "http://localhost:3001/";
+    const socketURI = "https://chess-play-backend.vercel.app/";
     console.log("socketURI", socketURI);
     if (!socketURI) {
       setSocket(null);
