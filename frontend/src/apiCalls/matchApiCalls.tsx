@@ -5,7 +5,13 @@ import {
 } from "@/interface/matchInterface";
 import axios, { AxiosResponse } from "axios";
 
-export const apiBaseUrl = "http://localhost:3001/" + "api/v1";
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
+
+export const apiBaseUrl = "https://chessplay-backend.azurewebsites.net/api/v1";
 
 export const getMatchDetailsApiCall = async (matchId: string) => {
   try {
@@ -39,7 +45,8 @@ export const createMatchApiCall = async (
       {
         matchCreatorAddress,
         stackedAmount,
-      }
+      },
+      config
     );
     return response;
   } catch (error) {
@@ -57,7 +64,8 @@ export const joinMatchApiCall = async (
       {
         matchId,
         matchJoinerAddress,
-      }
+      },
+      config
     );
     return response;
   } catch (error) {
@@ -77,7 +85,8 @@ export const setMatchWinnerApiCall = async (
         matchId,
         matchWinnerAddress,
         matchResultStatus,
-      }
+      },
+      config
     );
     return response;
   } catch (error) {
@@ -91,7 +100,8 @@ export const setRewardClaimedApiCall = async (matchId: string) => {
       `${apiBaseUrl}/match/rewardClaimed`,
       {
         matchId,
-      }
+      },
+      config
     );
     return response;
   } catch (error) {

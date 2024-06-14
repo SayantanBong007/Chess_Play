@@ -148,7 +148,7 @@ function LiveChessGame({
   }, [socket]);
 
   useEffect(() => {
-    const socketURI = "http://localhost:3001/";
+    const socketURI = "https://chessplay-backend.azurewebsites.net/";
     console.log("socketURI", socketURI);
     if (!socketURI) {
       setSocket(null);
@@ -164,7 +164,7 @@ function LiveChessGame({
     return () => {
       _socket.close();
     };
-  }, [setSocket]);
+  }, []);
 
   return (
     <>

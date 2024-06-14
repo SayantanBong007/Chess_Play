@@ -36,7 +36,7 @@ function CreateMatch() {
       const _matchId = response?.data?.data?.matchId;
       const matchCreated = await createMatch(_matchId, stackedAmount);
       if (matchCreated) {
-        router.push(`/match/${_matchId}`);
+        router.push(`/match/${_matchId}?id=1`);
       } else {
         toast.error("Something Went wrong with web3 connection. Try Again");
         setMatchCreating(false);
